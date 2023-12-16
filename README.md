@@ -11,10 +11,6 @@ are not available in the same OS the unifi controller runs on.
 
 ## Usage
 
-### Prerequisistes
-For one of the targets of the makefile to work, we need to be able to fetch secrets from AWS's secret manager. This
-requires us to set up credentials using https://github.com/ejortegau/aws_cli_bootstrap.
-
 ### Create both images
 ```shell
 make all
