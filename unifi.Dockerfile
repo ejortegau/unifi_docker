@@ -7,7 +7,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-reco
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* && \
     mkdir -p /usr/lib/unifi/data /default
 
-COPY assets/entrypoint.sh /
+COPY assets/unifi_entrypoint.sh /entrypoint.sh
 
 WORKDIR /usr/lib/unifi
 EXPOSE 8080 8443 8843 8880
