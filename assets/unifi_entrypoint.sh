@@ -11,6 +11,9 @@ if [[ ! -f "${OUTPUT}" ]]; then
   echo "statdb.mongo.uri=mongodb://${MONGO_USER}:${MONGO_PASS}@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DBNAME}_stat"
   echo "unifi.db.name=${MONGO_DBNAME}"
   } > "${OUTPUT}"
+else
+  echo "${OUTPUT} already exists, contents (excluding DB URI) are:"
+  grep -v "db.mongo.uri" "${OUTPUT}"
 fi
 
 
