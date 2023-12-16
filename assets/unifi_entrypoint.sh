@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-OUTPUT="/var/lib/unifi/system.properties"
+BASEDIR="/var/lib/unifi"
+OUTPUT="${BASEDIR}/system.properties"
 
+echo "Contents of ${BASEDIR}"
+ls "${BASEDIR}"
 
 if [[ ! -f "${OUTPUT}" ]]; then
   echo "Creating ${OUTPUT} with external DB configuration"
