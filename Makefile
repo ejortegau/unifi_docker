@@ -1,12 +1,17 @@
-.PHONY: prereqs docker_mongo docker_unifi
+.PHONY: docker_mongo docker_unifi
 
-init-mongo.js:
-	./bin/prereqs.sh
+ifeq ($(MONGODB_VERSION),)
+MONGODB_VERSION := 4.4
+endif
 
-docker_mongo: init-mongo.js
-	 docker build . --file mongodb.Dockerfile --tag unifi-mongodb:4.4
+ifeq ($(UNIFI_VERSION),)
+UNIFI_VERSION := 4.4
+endif
+
+docker_mongo:
+	 docker build --build-arg MONGODB_VERSION=$(MONGODB_VERSION) . --file mongodb.Dockerfile --tag unifi-mongodb:$(MONGODB_VERSION)
 
 docker_unifi:
-	docker build . --file unifi.Dockerfile --tag unifi:8.0.7
+	docker build . --build-arg UNIFI_VERSION=$(UNIFI_VERSION) --file unifi.Dockerfile --tag unifi:$(UNIFI_VERSION)
 
 all: docker_unifi docker_mongo

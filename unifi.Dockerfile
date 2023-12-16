@@ -1,8 +1,10 @@
 FROM ubuntu:22.04
 
+ARG UNIFI_VERSION=8.0.7
+
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends openjdk-17-jre-headless wget  \
     binutils curl logrotate && \
-    wget -O /tmp/unifi.deb -c -L "https://dl.ui.com/unifi/8.0.7/unifi_sysvinit_all.deb" && \
+    wget -O /tmp/unifi.deb -c -L "https://dl.ui.com/unifi/${UNIFI_VERSION}/unifi_sysvinit_all.deb" && \
     dpkg -i --ignore-depends=mongodb-org-server /tmp/unifi.deb && \
     apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* && \
     mkdir -p /usr/lib/unifi/data /default
