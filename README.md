@@ -25,3 +25,15 @@ make docker_mongo
 ```shell
 make docker_unifi
 ```
+
+### Run the containers
+The containers need the following environment variables to be defined:
+
+#### For both containers
+* `MONGO_DBNAME`: name of the DB to be used by the Unifi controller.
+* `MONGO_USER`: username to be used by Unifi controller to connect to mongodb.
+* `MONGO_PASS`: password to be used by Unifi controller to connect to mongodb.
+
+#### For the Unifi container
+* `MONGO_HOST`: hostname to be used by Unifi controller to connect to mongodb.
+* `MONGO_PORT`: TCP port to be used by Unifi controller to connect to mongodb.
